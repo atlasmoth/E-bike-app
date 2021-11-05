@@ -11,11 +11,10 @@ import { Entypo } from "@expo/vector-icons";
 
 const actionSheetRef = createRef();
 
-const Tracking = () => {
-  let actionSheet;
-  // useEffect(() => {
-  //   actionSheetRef.current?.setModalVisible(true);
-  // }, []);
+const Tracking = (props) => {
+  useEffect(() => {
+    actionSheetRef.current?.setModalVisible(true);
+  }, []);
   return (
     <View
       style={{
@@ -36,7 +35,7 @@ const Tracking = () => {
             { flexDirection: "row", alignItems: "center", marginVertical: 20 },
           ]}
         >
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => props.navigation.goBack()}>
             <Entypo name="chevron-small-left" size={24} color="black" />
           </TouchableOpacity>
           <Text
@@ -265,8 +264,6 @@ const Tracking = () => {
                     backgroundColor: "#FFD337",
                     padding: 10,
                     borderRadius: 1000,
-                    justifyContent: "center",
-                    alignItems: "center",
                   },
                 ]}
               >
@@ -275,7 +272,6 @@ const Tracking = () => {
                     {
                       fontFamily: "Inter_900Black",
                       fontSize: 24,
-                      lineHeight: 24,
                     },
                   ]}
                 >
@@ -345,7 +341,6 @@ const Tracking = () => {
                     {
                       fontFamily: "Inter_900Black",
                       fontSize: 24,
-                      lineHeight: 24,
                     },
                   ]}
                 >
@@ -415,7 +410,6 @@ const Tracking = () => {
                     {
                       fontFamily: "Inter_900Black",
                       fontSize: 24,
-                      lineHeight: 24,
                     },
                   ]}
                 >

@@ -5,6 +5,7 @@ import { useFonts, Inter_900Black } from "@expo-google-fonts/inter";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Tracking from "./components/tracking";
+import Home from "./components/home";
 
 const Stack = createNativeStackNavigator();
 
@@ -54,6 +55,7 @@ function Signin(props) {
         </Text>
       </View>
       <TouchableOpacity
+        onPress={() => props.navigation.navigate("Home")}
         style={[
           {
             backgroundColor: "#000",
@@ -116,24 +118,19 @@ export default function App() {
         <Stack.Navigator>
           <Stack.Screen
             name="Signin"
-            component={Tracking}
-            options={{ headerShown: false }}
-          />
-          {/* <Stack.Screen
-            name="Register"
-            component={Register}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Signin"
             component={Signin}
             options={{ headerShown: false }}
           />
           <Stack.Screen
-            name="Profile"
-            component={Account}
+            name="Tracking"
+            component={Tracking}
             options={{ headerShown: false }}
-          /> */}
+          />
+          <Stack.Screen
+            name="Home"
+            component={Home}
+            options={{ headerShown: false }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     );
