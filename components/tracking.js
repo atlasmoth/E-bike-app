@@ -7,8 +7,8 @@ const actionSheetRef = createRef();
 
 const Tracking = (props) => {
   useEffect(() => {
-    actionSheetRef?.current?.setModalVisible(true);
     actionSheetRef.current?.snapToOffset(100);
+    actionSheetRef?.current?.setModalVisible(true);
   }, []);
   return (
     <View
