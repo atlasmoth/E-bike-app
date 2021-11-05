@@ -221,7 +221,7 @@ export default function Main(props) {
             uri: "https://raw.githubusercontent.com/atlasmoth/fun-projects/master/animation_500_kvm3bfic.gif",
           }}
           style={{ height: 160, width: 160 }}
-          resizeMode={FastImage.resizeMode.contain}
+          resizeMode={"contain"}
         />
         <Text
           style={[
