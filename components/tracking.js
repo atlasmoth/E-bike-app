@@ -1,5 +1,13 @@
 import ActionSheet from "react-native-actions-sheet";
-import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  StyleSheet,
+  SafeAreaView,
+  ScrollView,
+} from "react-native";
 import React, { createRef, useEffect } from "react";
 import { Entypo } from "@expo/vector-icons";
 
@@ -7,15 +15,15 @@ const actionSheetRef = createRef();
 
 const Tracking = (props) => {
   useEffect(() => {
-    actionSheetRef.current?.snapToOffset(100);
-    actionSheetRef?.current?.setModalVisible(true);
+    actionSheetRef.current?.snapToOffset(60);
+    actionSheetRef?.current?.show();
   }, []);
   return (
-    <View
-      contentContainerStyle={[{ justifyContent: "center" }]}
+    <SafeAreaView
       style={{
         flex: 1,
         backgroundColor: "#F1F6FB",
+        paddingTop: 10,
       }}
     >
       <Image
@@ -66,7 +74,7 @@ const Tracking = (props) => {
             borderColor: "#000",
             borderWidth: 1,
             borderRadius: 40,
-            fontWeight: 200,
+            fontWeight: "200",
           }}
         >
           SCP6653728497
@@ -82,14 +90,22 @@ const Tracking = (props) => {
       <ActionSheet
         ref={actionSheetRef}
         gestureEnabled={true}
+        bottomOffset={60}
         headerAlwaysVisible={true}
-        bottomOffset={100}
+        initialOffsetFromBottom={60}
       >
-        <View
+        <ScrollView
+          onScrollEndDrag={() => actionSheetRef.current?.handleChildScrollEnd()}
+          onScrollAnimationEnd={() =>
+            actionSheetRef.current?.handleChildScrollEnd()
+          }
+          onMomentumScrollEnd={() =>
+            actionSheetRef.current?.handleChildScrollEnd()
+          }
           style={[
             {
               backgroundColor: "#fff",
-              flex: 1,
+              flexGrow: 1,
               padding: 20,
               borderRadius: 80,
             },
@@ -101,7 +117,7 @@ const Tracking = (props) => {
               fontSize: 14,
               lineHeight: 24,
               color: "#7A809D",
-              fontWeight: 200,
+              fontWeight: "200",
             }}
           >
             Estimate arrives in
@@ -112,7 +128,7 @@ const Tracking = (props) => {
               fontSize: 24,
               lineHeight: 24,
               color: "#2E3E5C",
-              fontWeight: 200,
+              fontWeight: "200",
             }}
           >
             2h 40m
@@ -124,6 +140,7 @@ const Tracking = (props) => {
                 borderRadius: 24,
                 padding: 20,
                 marginVertical: 20,
+                position: "relative",
               },
             ]}
           >
@@ -142,7 +159,7 @@ const Tracking = (props) => {
                   fontSize: 16,
                   lineHeight: 20,
                   color: "#2E3E5C",
-                  fontWeight: 200,
+                  fontWeight: "200",
                   marginVertical: 5,
                 }}
               >
@@ -154,7 +171,7 @@ const Tracking = (props) => {
                   fontSize: 12,
                   lineHeight: 15,
                   color: "#96823D",
-                  fontWeight: 200,
+                  fontWeight: "200",
                   marginVertical: 5,
                 }}
               >
@@ -176,7 +193,7 @@ const Tracking = (props) => {
                   fontSize: 16,
                   lineHeight: 20,
                   color: "#2E3E5C",
-                  fontWeight: 200,
+                  fontWeight: "200",
                   marginVertical: 5,
                 }}
               >
@@ -188,7 +205,7 @@ const Tracking = (props) => {
                   fontSize: 12,
                   lineHeight: 15,
                   color: "#96823D",
-                  fontWeight: 200,
+                  fontWeight: "200",
                   marginVertical: 5,
                 }}
               >
@@ -210,7 +227,7 @@ const Tracking = (props) => {
                   fontSize: 16,
                   lineHeight: 20,
                   color: "#2E3E5C",
-                  fontWeight: 200,
+                  fontWeight: "200",
                   marginVertical: 5,
                 }}
               >
@@ -222,7 +239,7 @@ const Tracking = (props) => {
                   fontSize: 12,
                   lineHeight: 15,
                   color: "#96823D",
-                  fontWeight: 200,
+                  fontWeight: "200",
                   marginVertical: 5,
                 }}
               >
@@ -243,216 +260,233 @@ const Tracking = (props) => {
           >
             History
           </Text>
-          {/* first */}
-          <View
-            style={[
-              {
-                flexDirection: "row",
-                alignItems: "center",
-                marginVertical: 20,
-              },
-            ]}
-          >
+
+          <View>
             <View
               style={[
                 {
-                  backgroundColor: "#FFD337",
-                  padding: 10,
-                  borderRadius: 1000,
+                  position: "absolute",
+                  width: 2,
+                  left: 30,
+                  top: 40,
+                  height: "70%",
+                  zIndex: 0,
+                  backgroundColor: "#DFE6ED",
+                },
+              ]}
+            ></View>
+            {/* first */}
+            <View
+              style={[
+                {
+                  flexDirection: "row",
+                  alignItems: "center",
+                  marginVertical: 20,
+                  position: "relative",
                 },
               ]}
             >
-              <Text
+              <View
                 style={[
                   {
-                    fontFamily: "Inter_900Black",
-                    fontSize: 24,
+                    backgroundColor: "#FFD337",
+                    padding: 15,
+                    borderRadius: 1000,
                   },
                 ]}
               >
-                🚚
-              </Text>
-            </View>
-            <View style={[{ flex: 1, marginHorizontal: 10 }]}>
-              <Text
-                style={[
-                  {
-                    color: "#1E3354",
-                    fontFamily: "Inter_900Black",
-                    fontSize: 14,
-                    lineHeight: 17,
-                  },
-                ]}
-              >
-                Transit - Sending City
-              </Text>
+                <Text
+                  style={[
+                    {
+                      fontFamily: "Inter_900Black",
+                      fontSize: 24,
+                    },
+                  ]}
+                >
+                  🚚
+                </Text>
+              </View>
+              <View style={[{ flex: 1, marginHorizontal: 10 }]}>
+                <Text
+                  style={[
+                    {
+                      color: "#1E3354",
+                      fontFamily: "Inter_900Black",
+                      fontSize: 14,
+                      lineHeight: 17,
+                    },
+                  ]}
+                >
+                  Transit - Sending City
+                </Text>
+                <Text
+                  style={[
+                    {
+                      color: "#7A809D",
+                      fontFamily: "Inter_900Black",
+                      fontSize: 14,
+                      lineHeight: 24,
+                    },
+                  ]}
+                >
+                  Jakarta, Indonesia
+                </Text>
+              </View>
               <Text
                 style={[
                   {
                     color: "#7A809D",
                     fontFamily: "Inter_900Black",
-                    fontSize: 14,
+                    fontSize: 12,
                     lineHeight: 24,
                   },
                 ]}
               >
-                Jakarta, Indonesia
+                00.00 PM
               </Text>
             </View>
-            <Text
-              style={[
-                {
-                  color: "#7A809D",
-                  fontFamily: "Inter_900Black",
-                  fontSize: 12,
-                  lineHeight: 24,
-                },
-              ]}
-            >
-              00.00 PM
-            </Text>
-          </View>
-          {/* second */}
-          <View
-            style={[
-              {
-                flexDirection: "row",
-                alignItems: "center",
-                marginVertical: 20,
-              },
-            ]}
-          >
+            {/* second */}
             <View
               style={[
                 {
-                  backgroundColor: "#F1F6FB",
-                  padding: 15,
-                  borderRadius: 1000,
+                  flexDirection: "row",
+                  alignItems: "center",
+                  marginVertical: 20,
                 },
               ]}
             >
-              <Text
+              <View
                 style={[
                   {
-                    fontFamily: "Inter_900Black",
-                    fontSize: 24,
+                    backgroundColor: "#F1F6FB",
+                    padding: 15,
+                    borderRadius: 1000,
                   },
                 ]}
               >
-                📬
-              </Text>
-            </View>
-            <View style={[{ flex: 1, marginHorizontal: 10 }]}>
-              <Text
-                style={[
-                  {
-                    color: "#1E3354",
-                    fontFamily: "Inter_900Black",
-                    fontSize: 14,
-                    lineHeight: 17,
-                  },
-                ]}
-              >
-                Transit - Sending City
-              </Text>
+                <Text
+                  style={[
+                    {
+                      fontFamily: "Inter_900Black",
+                      fontSize: 24,
+                    },
+                  ]}
+                >
+                  📬
+                </Text>
+              </View>
+              <View style={[{ flex: 1, marginHorizontal: 10 }]}>
+                <Text
+                  style={[
+                    {
+                      color: "#1E3354",
+                      fontFamily: "Inter_900Black",
+                      fontSize: 14,
+                      lineHeight: 17,
+                    },
+                  ]}
+                >
+                  Transit - Sending City
+                </Text>
+                <Text
+                  style={[
+                    {
+                      color: "#7A809D",
+                      fontFamily: "Inter_900Black",
+                      fontSize: 14,
+                      lineHeight: 24,
+                    },
+                  ]}
+                >
+                  Jakarta, Indonesia
+                </Text>
+              </View>
               <Text
                 style={[
                   {
                     color: "#7A809D",
                     fontFamily: "Inter_900Black",
-                    fontSize: 14,
+                    fontSize: 12,
                     lineHeight: 24,
                   },
                 ]}
               >
-                Jakarta, Indonesia
+                00.00 PM
               </Text>
             </View>
-            <Text
-              style={[
-                {
-                  color: "#7A809D",
-                  fontFamily: "Inter_900Black",
-                  fontSize: 12,
-                  lineHeight: 24,
-                },
-              ]}
-            >
-              00.00 PM
-            </Text>
-          </View>
-          {/* third */}
-          <View
-            style={[
-              {
-                flexDirection: "row",
-                alignItems: "center",
-                marginVertical: 20,
-              },
-            ]}
-          >
+            {/* third */}
             <View
               style={[
                 {
-                  backgroundColor: "#F1F6FB",
-                  padding: 15,
-                  borderRadius: 1000,
+                  flexDirection: "row",
+                  alignItems: "center",
+                  marginVertical: 20,
                 },
               ]}
             >
-              <Text
+              <View
                 style={[
                   {
-                    fontFamily: "Inter_900Black",
-                    fontSize: 24,
+                    backgroundColor: "#F1F6FB",
+                    padding: 15,
+                    borderRadius: 1000,
                   },
                 ]}
               >
-                📦
-              </Text>
-            </View>
-            <View style={[{ flex: 1, marginHorizontal: 10 }]}>
-              <Text
-                style={[
-                  {
-                    color: "#1E3354",
-                    fontFamily: "Inter_900Black",
-                    fontSize: 14,
-                    lineHeight: 17,
-                  },
-                ]}
-              >
-                Transit - Sending City
-              </Text>
+                <Text
+                  style={[
+                    {
+                      fontFamily: "Inter_900Black",
+                      fontSize: 24,
+                    },
+                  ]}
+                >
+                  📦
+                </Text>
+              </View>
+              <View style={[{ flex: 1, marginHorizontal: 10 }]}>
+                <Text
+                  style={[
+                    {
+                      color: "#1E3354",
+                      fontFamily: "Inter_900Black",
+                      fontSize: 14,
+                      lineHeight: 17,
+                    },
+                  ]}
+                >
+                  Transit - Sending City
+                </Text>
+                <Text
+                  style={[
+                    {
+                      color: "#7A809D",
+                      fontFamily: "Inter_900Black",
+                      fontSize: 14,
+                      lineHeight: 24,
+                    },
+                  ]}
+                >
+                  Jakarta, Indonesia
+                </Text>
+              </View>
               <Text
                 style={[
                   {
                     color: "#7A809D",
                     fontFamily: "Inter_900Black",
-                    fontSize: 14,
+                    fontSize: 12,
                     lineHeight: 24,
                   },
                 ]}
               >
-                Jakarta, Indonesia
+                00.00 PM
               </Text>
             </View>
-            <Text
-              style={[
-                {
-                  color: "#7A809D",
-                  fontFamily: "Inter_900Black",
-                  fontSize: 12,
-                  lineHeight: 24,
-                },
-              ]}
-            >
-              00.00 PM
-            </Text>
           </View>
-        </View>
+        </ScrollView>
       </ActionSheet>
-    </View>
+    </SafeAreaView>
   );
 };
 

@@ -63,7 +63,7 @@ export default function Send(props) {
             fontSize: 18,
             lineHeight: 20,
             color: "#031725",
-            fontWeight: 200,
+            fontWeight: "200",
             marginVertical: 5,
           }}
         >

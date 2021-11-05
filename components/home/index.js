@@ -74,9 +74,7 @@ export default function Home() {
           headerShown: false,
           tabBarIcon: ({ active }) => {
             return (
-              <Text
-                style={{ fontFamily: "rubik-regular", textAlign: "center" }}
-              >
+              <Text style={{ textAlign: "center" }}>
                 <Foundation
                   name="home"
                   size={24}
@@ -94,9 +92,7 @@ export default function Home() {
           headerShown: false,
           tabBarIcon: ({ active }) => {
             return (
-              <Text
-                style={{ fontFamily: "rubik-regular", textAlign: "center" }}
-              >
+              <Text style={{ textAlign: "center" }}>
                 <MaterialCommunityIcons
                   name="bookmark-minus-outline"
                   size={24}
@@ -114,9 +110,7 @@ export default function Home() {
           headerShown: false,
           tabBarIcon: ({ active }) => {
             return (
-              <Text
-                style={{ fontFamily: "rubik-regular", textAlign: "center" }}
-              >
+              <Text style={{ textAlign: "center" }}>
                 <Feather
                   name="send"
                   size={24}
@@ -134,9 +128,7 @@ export default function Home() {
           headerShown: false,
           tabBarIcon: ({ active }) => {
             return (
-              <Text
-                style={{ fontFamily: "rubik-regular", textAlign: "center" }}
-              >
+              <Text style={{ textAlign: "center" }}>
                 <Feather
                   name="settings"
                   size={24}
