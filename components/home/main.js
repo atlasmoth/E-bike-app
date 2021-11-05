@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 
 import {
   Animated,
@@ -221,7 +221,7 @@ export default function Main(props) {
             uri: "https://raw.githubusercontent.com/atlasmoth/fun-projects/master/animation_500_kvm3bfic.gif",
           }}
           style={{ height: 160, width: 160 }}
-          resizeMode="contain"
+          resizeMode={FastImage.resizeMode.contain}
         />
         <Text
           style={[
