@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, Image, TouchableOpacity } from "react-native";
+import { Text, View, Image, TouchableOpacity, ScrollView } from "react-native";
 import AppLoading from "expo-app-loading";
 import { useFonts, Inter_900Black } from "@expo-google-fonts/inter";
 import { NavigationContainer } from "@react-navigation/native";
@@ -11,13 +11,14 @@ const Stack = createNativeStackNavigator();
 
 function Signin(props) {
   return (
-    <View
+    <ScrollView
+      contentContainerStyle={[
+        { alignItems: "center", justifyContent: "center" },
+      ]}
       style={[
         {
           flex: 1,
-          justifyContent: "center",
           backgroundColor: "#FFD337",
-          alignItems: "center",
           padding: 20,
         },
       ]}
@@ -101,7 +102,7 @@ function Signin(props) {
         Don't have an account?
         <Text style={[{ color: "#031522", marginLeft: 10 }]}>Sign Up</Text>
       </Text>
-    </View>
+    </ScrollView>
   );
 }
 

@@ -282,7 +282,7 @@ export default function Send(props) {
             In the process
           </Text>
         </View>
-        <Entypo name="chevron-small-left" size={24} color="black" />
+        <Entypo name="chevron-small-right" size={24} color="black" />
       </View>
       {/* third */}
       <View
@@ -340,7 +340,7 @@ export default function Send(props) {
             In the process
           </Text>
         </View>
-        <Entypo name="chevron-small-left" size={24} color="black" />
+        <Entypo name="chevron-small-right" size={24} color="black" />
       </View>
     </ScrollView>
   );

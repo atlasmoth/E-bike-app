@@ -157,6 +157,7 @@ export default function Main(props) {
               fontSize: 14,
               lineHeight: 18,
               color: "#96823D",
+              maxWidth: 100,
             },
           ]}
         >
